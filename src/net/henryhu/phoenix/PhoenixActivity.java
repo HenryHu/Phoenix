@@ -250,7 +250,7 @@ public class PhoenixActivity extends Activity implements OnClickListener{
     			} finally {
     				c.close();
     			}
-    			setStatus("Contacts loaded. You may 'Get Phonetics' now.");
+    			setStatus("Contacts loaded. You may 'Get phonetics' now.");
     		}
     	}).start();
     }

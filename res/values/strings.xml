@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Get phonetics for your contacts.</string>
+    <string name="app_name">Phoenix</string>
+    <string name="btn_listcontacts">List contacts</string>
+    <string name="btn_getnames">Get phonetics</string>
+    <string name="btn_apply">Save phonetics</string>
+    <string name="btn_filter">Filter results</string>
+
+</resources>

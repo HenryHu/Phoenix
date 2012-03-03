@@ -58,42 +58,42 @@ class Contact {
 		{
 			sb.append(displayName);
 			sb.append('(');
-			sb.append(firstName);
+			sb.append(lastName);
 			sb.append(" ");
 			sb.append(middleName);
 			sb.append(" ");
-			sb.append(lastName);
+			sb.append(firstName);
 			sb.append(")");
 			
 			sb.append(" / ");
 			if (phoFirstName == null && phoLastName == null && phoMiddleName == null)
-				sb.append("<no phonetic name>");
+				sb.append(noPhonetic);
 			else
 			{
-				sb.append(phoFirstName);
+				sb.append(phoLastName);
 				sb.append(" ");
 				sb.append(phoMiddleName);
 				sb.append(" ");
-				sb.append(phoLastName);
+				sb.append(phoFirstName);
 			}
 		}
 		else
 		{
 			sb.append(displayName);
 			sb.append('(');
-			sb.append(firstName);
-			sb.append(" ");
 			sb.append(lastName);
+			sb.append(" ");
+			sb.append(firstName);
 			sb.append(")");
 			
 			sb.append(" / ");
 			if (phoFirstName == null && phoLastName == null)
-				sb.append("<no phonetic name>");
+				sb.append(noPhonetic);
 			else
 			{
-				sb.append(phoFirstName);
-				sb.append(" ");
 				sb.append(phoLastName);
+				sb.append(" ");
+				sb.append(phoFirstName);
 			}
 		}
 		if (modified)

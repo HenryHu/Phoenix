@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">为您的联系人添加拼音</string>
+    <string name="app_name">拼音助手</string>
+    <string name="btn_listcontacts">列出联系人</string>
+    <string name="btn_getnames">添加拼音</string>
+    <string name="btn_apply">保存拼音</string>
+    <string name="btn_filter">查看更改</string>
+    <string name="st_loading">读取联系人中……</string>
+    <string name="st_loaded">联系人读取完毕。您可以“添加拼音”了。</string>
+    <string name="st_getpho">添加拼音中……</string>
+    <string name="st_phogot">拼音添加完毕。您可以用“查看更改”看看新添加的拼音。
+    					您也可以用“列出联系人”来重新开始。</string>
+    <string name="st_getstop">到此为止么？</string>
+    <string name="st_saved">拼音已经保存。您可以再次“列出联系人”来查看结果，以及添加更多的拼音。</string>
+    <string name="st_saving">保存中……</string>
+	<string name="st_filter">筛选中……</string>
+	<string name="st_filtered">筛选完毕，已经给这些联系人添加了新的拼音。请确认并保存拼音。</string>
+	<string name="q_phosel" formatted="false">请问“%s”(%s)的拼音是哪个？ 这是第%d个联系人，共%d个。</string>
+	<string name="ans_yes">好</string>
+	<string name="ans_no">继续</string>
+	<string name="s_nopho">没有拼音</string>
+	<string name="st_ready">请先让我列出您的联系人。</string>
+    					
+</resources>

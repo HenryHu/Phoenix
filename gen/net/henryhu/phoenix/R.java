@@ -31,11 +31,25 @@ public final class R {
         public static final int main=0x7f030001;
     }
     public static final class string {
+        public static final int ans_no=0x7f040011;
+        public static final int ans_yes=0x7f040010;
         public static final int app_name=0x7f040001;
         public static final int btn_apply=0x7f040004;
         public static final int btn_filter=0x7f040005;
         public static final int btn_getnames=0x7f040003;
         public static final int btn_listcontacts=0x7f040002;
         public static final int hello=0x7f040000;
+        public static final int q_phosel=0x7f04000f;
+        public static final int s_nopho=0x7f040012;
+        public static final int st_filter=0x7f04000d;
+        public static final int st_filtered=0x7f04000e;
+        public static final int st_getpho=0x7f040008;
+        public static final int st_getstop=0x7f04000a;
+        public static final int st_loaded=0x7f040007;
+        public static final int st_loading=0x7f040006;
+        public static final int st_phogot=0x7f040009;
+        public static final int st_ready=0x7f040013;
+        public static final int st_saved=0x7f04000b;
+        public static final int st_saving=0x7f04000c;
     }
 }

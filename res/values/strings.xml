@@ -7,5 +7,20 @@
     <string name="btn_getnames">Get phonetics</string>
     <string name="btn_apply">Save phonetics</string>
     <string name="btn_filter">Filter results</string>
-
+    <string name="st_loading">Loading contacts...</string>
+    <string name="st_loaded">Contacts loaded. You may \'Get phonetics\' now.</string>
+    <string name="st_getpho">Getting phonetics...</string>
+    <string name="st_phogot">Phonetics got. You may \'Filter results\' now.\n
+    					You may also \'List contacts\' to start from scratch.</string>
+    <string name="st_getstop">Do you want to stop?</string>
+    <string name="st_saved">Saved. You may \'List contacts\' again.</string>
+    <string name="st_saving">Saving...</string>
+	<string name="st_filter">Filtering...</string>
+	<string name="st_filtered">Results filtered. You may review the results and \'Save phonetics\'.</string>
+	<string name="q_phosel" formatted="false">What\'s %s\'s phonetic? Contact: %s No. %d/%d</string>
+	<string name="ans_yes">Yes</string>
+	<string name="ans_no">No</string>
+	<string name="s_nopho">no phonetic name</string>
+	<string name="st_ready">Ready. You may \'List contacts\' now.</string>
+    					
 </resources>

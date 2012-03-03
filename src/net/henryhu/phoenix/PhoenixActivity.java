@@ -34,6 +34,9 @@ class Contact {
 	long rawId;
 	String displayName;
 	boolean modified;
+	
+	public static CharSequence noPhonetic;
+	
 	Contact(String _firstName, String _middleName, String _lastName, 
 			String _phoFirstName, String _phoMiddleName, String _phoLastName, 
 			long _rawId, String _displayName) {
@@ -137,6 +140,7 @@ public class PhoenixActivity extends Activity implements OnClickListener{
         lContacts = (ListView)findViewById(R.id.lContacts);
         tStatus = (TextView)findViewById(R.id.tStatus);
                
+        Contact.noPhonetic = getResources().getText(R.string.s_nopho);
         contacts = new LinkedList<Contact>();
         adpContacts = new ArrayAdapter<Contact>(this, R.layout.contact_view, R.id.tContactName, contacts); 
         lContacts.setAdapter(adpContacts);
@@ -153,7 +157,7 @@ public class PhoenixActivity extends Activity implements OnClickListener{
         bFilter.setOnClickListener(this);
     }
     
-    void setStatus(final String status) {
+    void setStatus(final CharSequence status) {
     	runOnUiThread(new Runnable() {
     		@Override
     		public void run() {
@@ -189,7 +193,7 @@ public class PhoenixActivity extends Activity implements OnClickListener{
 					current.add(py);
     		}
     	}
-    	setStatus("Ready. You may 'List contacts' now.");
+    	setStatus(getResources().getText(R.string.st_ready));
     }
     
     Object cleaner = new Object();
@@ -217,7 +221,7 @@ public class PhoenixActivity extends Activity implements OnClickListener{
     }
     
     void listContacts() {
-    	setStatus("Loading contacts...");
+    	setStatus(getResources().getText(R.string.st_loading));
     	new Thread(new Runnable() {
     		@Override
     		public void run() {
@@ -250,15 +254,15 @@ public class PhoenixActivity extends Activity implements OnClickListener{
     			} finally {
     				c.close();
     			}
-    			setStatus("Contacts loaded. You may 'Get phonetics' now.");
+    			setStatus(getResources().getText(R.string.st_loaded));
     		}
     	}).start();
     }
     
-    String phoChosen = null;
+    CharSequence phoChosen = null;
     Object waiter = new Object();
     
-    public String getInput(final String title, final String[] items)
+    public CharSequence getInput(final CharSequence title, final CharSequence[] items)
     {
     	phoChosen = null;
     	
@@ -316,13 +320,12 @@ public class PhoenixActivity extends Activity implements OnClickListener{
     		if (pys.size() == 1)
     			py = pys.get(0);
     		else {
-    			py = getInput("What's " + str.charAt(i) + 
-    					"'s phonetic? Contact: " + fullName + 
-    					" No." + String.valueOf(no)
-    					+ "/" + String.valueOf(total), 
+    			CharSequence cpy = getInput(String.format(getResources().getText(R.string.q_phosel).toString(),
+    					str.charAt(i), fullName, no, total), 
     					pys.toArray(new String[]{}));
-    			if (py == null)
+    			if (cpy == null)
     				throw new CancelledException();
+    			py = cpy.toString();
     		}
     		
     		if (ret.length() == 0)
@@ -337,7 +340,7 @@ public class PhoenixActivity extends Activity implements OnClickListener{
     }
     
     void getPhonetics() {
-    	setStatus("Getting phonetics...");
+    	setStatus(getResources().getText(R.string.st_getpho));
     	new Thread(new Runnable() {
     		@Override
     		public void run() {
@@ -369,17 +372,17 @@ public class PhoenixActivity extends Activity implements OnClickListener{
     						if (modified)
     							c.modified = true;
     					} catch (CancelledException e) {
-   							String ret = getInput("Do you want to stop?", 
-   								new String[] {"Yes", "No"});
-   							if (ret == null || ret.equals("Yes"))
+   							CharSequence ret = getInput(getResources().getText(R.string.st_getstop), 
+   								new CharSequence[] {getResources().getText(R.string.ans_yes), 
+   								getResources().getText(R.string.ans_no)});
+   							if (ret == null || ret.equals(getResources().getText(R.string.ans_yes)))
    								break;
     					}
     				}
     			}
 
     			notifyChanged();
-    			setStatus("Phonetics got. You may 'Filter results' now.\n" +
-    					"You may also 'List contacts' to start from scratch.");
+    			setStatus(getResources().getText(R.string.st_phogot));
     		}
     	}).start();
     }
@@ -394,7 +397,7 @@ public class PhoenixActivity extends Activity implements OnClickListener{
     }
     
     void setPhonetics() {
-    	setStatus("Saving...");
+    	setStatus(getResources().getText(R.string.st_saving));
     	new Thread(new Runnable() {
     		@Override
     		public void run() {
@@ -424,14 +427,14 @@ public class PhoenixActivity extends Activity implements OnClickListener{
     				e.printStackTrace();
     				Log.e("setPhonetics()", "apply fail! " + e.getMessage());
     			}
-    			setStatus("Saved. You may 'List contacts' again.");
+    			setStatus(getResources().getText(R.string.st_saved));
     		}
     		
     	}).start();
     }
     
     void filterResults() {
-    	setStatus("Filtering...");
+    	setStatus(getResources().getText(R.string.st_filter));
     	for (int i=0; i<contacts.size(); i++) {
     		Contact c = contacts.get(i);
     		if (!c.modified) {
@@ -439,13 +442,12 @@ public class PhoenixActivity extends Activity implements OnClickListener{
     			i--;
     		}
     	}
-    	setStatus("Results filtered. You may review the results and 'Save phonetics'.");
+    	setStatus(getResources().getText(R.string.st_filtered));
     	notifyChanged();
     }
 
 	@Override
 	public void onClick(View arg0) {
-		// TODO Auto-generated method stub
 		if (arg0 == bList) {
 			listContacts();
 		} else if (arg0 == bGet) {
